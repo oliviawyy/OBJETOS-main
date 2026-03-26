@@ -11,12 +11,26 @@ const containerPassword = document.querySelector('.app-pwd__result'); // Contain
 const welcomeElement = document.querySelector('.app-pwd__welcome'); // Elemento de saudação
 const datetimeElement = document.querySelector('.app-pwd__datetime'); // Elemento de data e hora
 
+/* Objeto que contém os conjuntos de caracteres possíveis para a geração de senha
+cada propriedade representa um tipo diferente de caractere */
+const charsets = {
+  uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', // Letras maiúsculas
+  lowercase: 'abcdefghijklmnopqrstuvwxyz', // Letras minúsculas
+  numbers: '0123456789',                   // Números
+  special: '!@#$%^&*'                     // Caracteres especiais
+}
 
 
 /* Variáveis para armazenar a senha atual e o histórico de senhas */
+let novaSenha = '';       // armazena a senha atual gerada
+let historicoSenhas = []; // array para armazenar as últimas 3 senhas geradas
 
 
 /* Função que retorna uma saudação baseada na hora atual do dia
+utiliza metodo getHours() do objeto Date para obter a j=hora atual (0-23) */
+const getSaudacao = () => {
+
+    const hora = new Date().getHours();
 
 
   /**
@@ -26,17 +40,34 @@ const datetimeElement = document.querySelector('.app-pwd__datetime'); // Element
    * 18:00 - 23:59 -> Boa noite
    */
 
+    if (hora < 12) return 'Bom dia';
+    if (hora < 18) return 'Boa tarde';
+    return 'Boa noite';
+};
 
 
 /* Função que formata a data e hora atual em um formato legível
 Utiliza vários métodos do objeto Date para obter os componentes da data */
+const formatarDataHora = () => {
 
-/** Cria um objeto com a data e hora atual */
+  // cria um objeto com a data e hora atual
+  const agora = new Date();
+  console.log(agora);
+  console.log('-------------------')
 
-
-/** Array com os nomes dos dias da semana */
+  // Array com os nomes os dias da semana
+  const diasSemana = [
+    'Domingo',
+    'Segunda-feira',
+    'Terça-feira',
+    'Quarta-feira',
+    'Quinta-feira',
+    'Sexta-feira',
+    'Sábado'
+  ];
 
 /** Obtém o dia da semana */
+const diaSemana = 
 
 
 /** Dados da data */
