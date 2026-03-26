@@ -52,8 +52,7 @@ const formatarDataHora = () => {
 
   // cria um objeto com a data e hora atual
   const agora = new Date();
-  console.log(agora);
-  console.log('-------------------')
+  
 
   // Array com os nomes os dias da semana
   const diasSemana = [
@@ -67,19 +66,25 @@ const formatarDataHora = () => {
   ];
 
 /** Obtém o dia da semana */
-const diaSemana = 
+const diaSemana = diasSemana[agora.getDay()];
 
 
 /** Dados da data */
-
+const dia = agora.getDate().toString().padStart(2,'0');
+const mes = (agora.getMonth() + 1).toString().padStart(2,'0');
+const ano = agora.getFullYear();
 
 /**
  * Hora como número (para lógica, se necessário no futuro)
  * Aqui usamos apenas para formatação
  */
-
+const hora = agora.getHours().toString().padStart(2,'0');
+const minuto = agora.getMinutes().toString().padStart(2,'0');
+const segundo = agora.getSeconds().toString().padStart(2,'0');
 
 /** Retorna apenas a data e hora (sem saudação) */
+return `${diaSemana}, ${dia}/${mes}/${ano} ${hora}:${minuto}:${segundo}`;
+};
 
 
 
