@@ -37,11 +37,11 @@ body {
 }
 
 .app-pwd__header {
-    background-color: #f7f9fc;
+    background-color: #c9defd;
     padding: 15px 25px;
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid #eef2f6;
+    border-bottom: 1px solid #bcddfd;
     font-size: 0.85rem;
     color: var(--text-secondary);
     font-weight: 600;
@@ -132,7 +132,7 @@ body {
     margin-top: 30px;
     width: 100%;
     padding: 20px;
-    background: #EBF8FF;
+    background: #ebfff6;
     border: 2px dashed var(--brand-blue);
     border-radius: 10px;
     text-align: center;

@@ -65,8 +65,12 @@ const formatarDataHora = () => {
     'Sábado'
   ];
 
+console.log(diasSemana[agora.getDay()])
+
+
 /** Obtém o dia da semana */
 const diaSemana = diasSemana[agora.getDay()];
+
 
 
 /** Dados da data */
@@ -89,20 +93,68 @@ return `${diaSemana}, ${dia}/${mes}/${ano} ${hora}:${minuto}:${segundo}`;
 
 
 /* Função que atualiza o cabeçalho com a saudação e a data/hora atual */
+const atualizarHeader = () => {
+  welcomeElement.textContent = `${getSaudacao()}!`;
+  datetimeElement.textContent = formatarDataHora();
+}
 
 /* Atualizar header a cada segundo */
-
+setInterval(atualizarHeader, 1000);
 
 /* Inicializar header */
-
+atualizarHeader();
 
 /* Exibe inicialmente o valor do slider*/
+sizePassword.textContent = sliderElement.value;
 
 
 /* Atualiza o valor exibido do tamanho da senha conforme o slider é movimentado */
-
+sliderElement.addEventListener('input', (e) => {
+  sizePassword.textContent = e.target.value;
+});
 
 /* Função principal para gerar a senha */
+const generatePassword = () => {
+
+};
+
+/* Função para copiar a senha gerada para a área de transferência */
+const copyPassword = () => {
+  alert('Senha copiada para a área de transferência!'); //exibe um alerta de sucesso
+  navigator.clipboard.writeText(novaSenha); // copia a senha usando a API Clipboard
+}
+
+// adicionar os event listeners para os eventos de clique
+buttonElement.addEventListener('click', generatePassword); // gera nova senha
+containerPassword.addEventListener('click', copyPassword); // copia a senha
+
+
+// funcao para limpar os dados e esconder os containers
+const clearData = () => {
+  //limpa historico de senhas
+  historicoSenhas = [];
+  novaSenha: '';
+
+  containerPassword.classList.add('hide');
+  const historico = document.querySelector('.app-pwd__history');
+  if (historico) {
+    historico.style.display = 'none';
+  }
+
+  // reseta os checkboxes para o estado inicial (marcados)
+  document.querySelector('.uppercase-check').checked = true;
+  document.querySelector('.lowercase-check').checked = true;
+  document.querySelector('.numbers-check').checked = true;
+  document.querySelector('.special-check').checked = true;
+
+  // reseta o slider para o valor inicial
+  sliderElement.value = 8;
+  sizePassword.textContent= '8';
+
+};
+
+// adiciona o event listener para o botão de limpar
+clearButton.addEventListener('click', clearData);
 
 // String que armazenará todos os caracteres possíveis para a senha
 
@@ -112,7 +164,7 @@ return `${diaSemana}, ${dia}/${mes}/${ano} ${hora}:${minuto}:${segundo}`;
 
 
   /* Construir o charset baseado nas opções selecionadas */
- 
+
 
   /* Se nenhuma opção estiver selecionada, selecionar todas */
  
@@ -158,7 +210,7 @@ return `${diaSemana}, ${dia}/${mes}/${ano} ${hora}:${minuto}:${segundo}`;
 
   
 
-/* Função para copiar a senha gerada para a área de transferência */
+
 
   // Exibe um alerta de sucesso
  // Copia a senha usando a API Clipboard
